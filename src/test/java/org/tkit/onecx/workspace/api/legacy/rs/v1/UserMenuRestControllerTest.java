@@ -4,6 +4,7 @@ import static io.restassured.RestAssured.given;
 import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
 import static org.mockserver.model.HttpRequest.request;
 import static org.mockserver.model.HttpResponse.response;
+import static org.tkit.quarkus.security.test.SecurityTestUtils.getKeycloakClientToken;
 
 import java.util.List;
 import java.util.Map;
@@ -79,8 +80,8 @@ class UserMenuRestControllerTest extends AbstractTest {
 
         var output = given()
                 .when()
-                .auth().oauth2(keycloakClient.getClientAccessToken("testClient"))
-                .header(APM_HEADER_PARAM, ADMIN)
+                .auth().oauth2(getKeycloakClientToken("testClient"))
+                .header(APM_HEADER_PARAM, keycloakClient.getAccessToken(USER))
                 .contentType(APPLICATION_JSON)
                 .body(requestDTO)
                 .post("accessToken")
@@ -113,8 +114,8 @@ class UserMenuRestControllerTest extends AbstractTest {
                 .menuKeys(List.of("main-menu"));
         given()
                 .when()
-                .auth().oauth2(keycloakClient.getClientAccessToken("testClient"))
-                .header(APM_HEADER_PARAM, ADMIN)
+                .auth().oauth2(getKeycloakClientToken("testClient"))
+                .header(APM_HEADER_PARAM, keycloakClient.getAccessToken(USER))
                 .contentType(APPLICATION_JSON)
                 .body(requestDTO)
                 .post("accessToken")
@@ -130,8 +131,8 @@ class UserMenuRestControllerTest extends AbstractTest {
         requestDTO.menuKeys(List.of("main-menu"));
         var output = given()
                 .when()
-                .auth().oauth2(keycloakClient.getClientAccessToken("testClient"))
-                .header(APM_HEADER_PARAM, ADMIN)
+                .auth().oauth2(getKeycloakClientToken("testClient"))
+                .header(APM_HEADER_PARAM, keycloakClient.getAccessToken(USER))
                 .contentType(APPLICATION_JSON)
                 .body(requestDTO)
                 .post("accessToken")
@@ -180,8 +181,8 @@ class UserMenuRestControllerTest extends AbstractTest {
 
         var output = given()
                 .when()
-                .auth().oauth2(keycloakClient.getClientAccessToken("testClient"))
-                .header(APM_HEADER_PARAM, ADMIN)
+                .auth().oauth2(getKeycloakClientToken("testClient"))
+                .header(APM_HEADER_PARAM, keycloakClient.getAccessToken(USER))
                 .contentType(APPLICATION_JSON)
                 .body(requestDTO)
                 .post("idtoken")

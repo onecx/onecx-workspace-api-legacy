@@ -111,7 +111,7 @@ class UserMenuRestControllerConfigTest extends AbstractTest {
         var output = given()
                 .when()
                 .auth().oauth2(keycloakClient.getClientAccessToken("testClient"))
-                .header(APM_HEADER_PARAM, ADMIN)
+                .header(APM_HEADER_PARAM, keycloakClient.getAccessToken(USER))
                 .contentType(APPLICATION_JSON)
                 .body(requestDTO)
                 .post("accessToken")
