@@ -1,0 +1,10 @@
+include::onecx-workspace-api-legacy-attributes.adoc[opts=optional]
+
+== onecx-workspace-api-legacy
+
+include::docs.adoc[opts=optional]
+
+=== Configuration
+include::onecx-workspace-api-legacy.adoc[opts=optional]
+
+include::onecx-workspace-api-legacy-docs.adoc[opts=optional]

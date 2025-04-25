@@ -1,0 +1,82 @@
+:summaryTableId: onecx-workspace-api-legacy
+[.configuration-legend]
+icon:lock[title=Fixed at build time] Configuration property fixed at build time - All other configuration properties are overridable at runtime
+[.configuration-reference.searchable, cols="80,.^10,.^10"]
+|===
+
+h|[.header-title]##Configuration property##
+h|Type
+h|Default
+
+a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-token-access-roles-path]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-token-access-roles-path[`onecx.workspace.api.legacy.token.access.roles.path`]##
+
+[.description]
+--
+access token roles path
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++ONECX_WORKSPACE_API_LEGACY_TOKEN_ACCESS_ROLES_PATH+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++ONECX_WORKSPACE_API_LEGACY_TOKEN_ACCESS_ROLES_PATH+++`
+endif::add-copy-button-to-env-var[]
+--
+|string
+|`realm_access/roles`
+
+a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-token-id-roles]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-token-id-roles[`onecx.workspace.api.legacy.token.id.roles`]##
+
+[.description]
+--
+access token roles path
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++ONECX_WORKSPACE_API_LEGACY_TOKEN_ID_ROLES+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++ONECX_WORKSPACE_API_LEGACY_TOKEN_ID_ROLES+++`
+endif::add-copy-button-to-env-var[]
+--
+|string
+|`realm_roles`
+
+a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-shell-mapping-enabled]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-shell-mapping-enabled[`onecx.workspace.api.legacy.shell-mapping.enabled`]##
+
+[.description]
+--
+Enable or disable shell mapping
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++ONECX_WORKSPACE_API_LEGACY_SHELL_MAPPING_ENABLED+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++ONECX_WORKSPACE_API_LEGACY_SHELL_MAPPING_ENABLED+++`
+endif::add-copy-button-to-env-var[]
+--
+|boolean
+|`false`
+
+a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-shell-mapping-prefix]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-shell-mapping-prefix[`onecx.workspace.api.legacy.shell-mapping.prefix`]##
+
+[.description]
+--
+Prefix to be used for paths
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++ONECX_WORKSPACE_API_LEGACY_SHELL_MAPPING_PREFIX+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++ONECX_WORKSPACE_API_LEGACY_SHELL_MAPPING_PREFIX+++`
+endif::add-copy-button-to-env-var[]
+--
+|string
+|`ui/`
+
+|===
+
+
+:!summaryTableId:
