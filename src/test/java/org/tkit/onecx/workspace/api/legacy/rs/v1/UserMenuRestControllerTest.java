@@ -146,7 +146,7 @@ class UserMenuRestControllerTest extends AbstractTest {
     @Test
     void getUserMenuIdTokenTest() {
 
-        final String idToken = createIdToken("user", List.of("role1", "role3"));
+        final String idToken = createIdToken("user", List.of("role1", "role2"));
         String workspaceName = "testWorkspace";
 
         UserWorkspaceMenuItem child = new UserWorkspaceMenuItem().name("mainMenuChild").key("MAIN_MENU_CHILD").position(2)
