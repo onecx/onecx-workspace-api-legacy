@@ -1,0 +1,163 @@
+---
+openapi: 3.0.3
+info:
+  title: onecx-workspace-api-legacy
+  description: OneCX Workspace API legacy
+  version: "1.0"
+servers:
+  - url: http://onecx-workspace-api-legacy:8080/
+tags:
+  - name: menuItem
+paths:
+  /menu/menuItems/idtoken:
+    post:
+      security:
+        - oauth2: [ ocx-ws-legacy:read ]
+      tags:
+        - menuItem
+      description: get User specific menu items
+      operationId: getMenuItemsIdToken
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetMenuItemsRequest'
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserWorkspaceMenuStructure'
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailResponse'
+  /menu/menuItems/accessToken:
+    post:
+      security:
+        - oauth2: [ ocx-ws-legacy:read ]
+      tags:
+        - menuItem
+      description: get User specific menu items
+      operationId: getMenuItemsAccessToken
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetMenuItemsRequest'
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserWorkspaceMenuStructure'
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailResponse'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://oauth.simple.api/token
+          scopes:
+            ocx-ws-legacy:read: Grants menu read access
+  schemas:
+    GetMenuItemsRequest:
+      type: object
+      required:
+        - workspaceName
+      properties:
+        token:
+          type: string
+        workspaceName:
+          type: string
+        menuKeys:
+          type: array
+          minItems: 1
+          items:
+            type: string
+    UserWorkspaceMenuStructure:
+      type: object
+      properties:
+        workspaceName:
+          type: string
+        menu:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/UserWorkspaceMenuItem'
+    UserWorkspaceMenuItem:
+      type: object
+      properties:
+        key:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        applicationId:
+          type: string
+        position:
+          format: int32
+          type: integer
+        badge:
+          type: string
+        external:
+          type: boolean
+          default: false
+        disabled:
+          type: boolean
+        i18n:
+          type: object
+          additionalProperties:
+            type: string
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserWorkspaceMenuItem'
+    ProblemDetailResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+        detail:
+          type: string
+        params:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProblemDetailParam'
+        invalidParams:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProblemDetailInvalidParam'
+    ProblemDetailParam:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+    ProblemDetailInvalidParam:
+      type: object
+      properties:
+        name:
+          type: string
+        message:
+          type: string
+    OffsetDateTime:
+      format: date-time
+      type: string
+      example: 2022-03-10T12:15:50-04:00

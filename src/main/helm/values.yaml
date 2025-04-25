@@ -1,0 +1,15 @@
+app:
+  name: api-legacy
+  image:
+    repository: "onecx/onecx-workspace-api-legacy"
+  operator:
+    keycloak:
+      client:
+        enabled: true
+        spec:
+          kcConfig:
+            defaultClientScopes: [ ocx-ws:read ]
+    microservice:
+      spec:
+        description: OneCX Workspace API Legacy
+        name: OneCX Workspace API Legacy
