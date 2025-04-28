@@ -185,7 +185,7 @@ class UserMenuRestControllerTest extends AbstractTest {
                 .header(APM_HEADER_PARAM, keycloakClient.getAccessToken(USER))
                 .contentType(APPLICATION_JSON)
                 .body(requestDTO)
-                .post("idtoken")
+                .post("idToken")
                 .then()
                 .statusCode(Response.Status.OK.getStatusCode())
                 .contentType(APPLICATION_JSON)

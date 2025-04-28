@@ -9,7 +9,7 @@ servers:
 tags:
   - name: menuItem
 paths:
-  /menu/menuItems/idtoken:
+  /v1/menu/menuItems/idToken:
     post:
       security:
         - oauth2: [ ocx-ws-legacy:read ]
@@ -36,7 +36,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetailResponse'
-  /menu/menuItems/accessToken:
+  /v1/menu/menuItems/accessToken:
     post:
       security:
         - oauth2: [ ocx-ws-legacy:read ]
