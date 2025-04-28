@@ -217,4 +217,26 @@ class UserMenuRestControllerTest extends AbstractTest {
         }
         return true;
     }
+
+    @Test
+    void getUserMenuAccessNoTokenTest() {
+
+        String workspaceName = "testWorkspace";
+
+        GetMenuItemsRequestDTOV1 requestDTO = new GetMenuItemsRequestDTOV1()
+                .workspaceName(workspaceName).menuKeys(List.of("main-menu"));
+
+        given()
+                .when()
+                .auth().oauth2(getKeycloakClientToken("testClient"))
+                .header(APM_HEADER_PARAM, keycloakClient.getAccessToken(USER))
+                .contentType(APPLICATION_JSON)
+                .body(requestDTO)
+                .post("accessToken")
+                .then()
+                .statusCode(Response.Status.BAD_REQUEST.getStatusCode())
+                .contentType(APPLICATION_JSON);
+
+        mockServerClient.clear("mock");
+    }
 }
