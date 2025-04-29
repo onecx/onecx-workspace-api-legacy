@@ -8,6 +8,23 @@ h|[.header-title]##Configuration property##
 h|Type
 h|Default
 
+a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-workspace-mapping-mapping]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-workspace-mapping-mapping[`onecx.workspace.api.legacy.workspace.mapping."mapping"`]##
+
+[.description]
+--
+Mapping workspace configuration.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++ONECX_WORKSPACE_API_LEGACY_WORKSPACE_MAPPING__MAPPING_+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++ONECX_WORKSPACE_API_LEGACY_WORKSPACE_MAPPING__MAPPING_+++`
+endif::add-copy-button-to-env-var[]
+--
+|Map<String,String>
+|
+
 a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-token-access-roles-path]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-token-access-roles-path[`onecx.workspace.api.legacy.token.access.roles.path`]##
 
 [.description]

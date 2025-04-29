@@ -1,5 +1,7 @@
 package org.tkit.onecx.workspace.api.legacy.domain.config;
 
+import java.util.Map;
+
 import io.quarkus.runtime.annotations.ConfigDocFilename;
 import io.quarkus.runtime.annotations.ConfigPhase;
 import io.quarkus.runtime.annotations.ConfigRoot;
@@ -14,6 +16,24 @@ import io.smallrye.config.WithName;
 @ConfigRoot(phase = ConfigPhase.RUN_TIME)
 @ConfigMapping(prefix = "onecx.workspace.api.legacy")
 public interface ApiLegacyConfig {
+
+    /**
+     * Workspace config
+     */
+    @WithName("workspace")
+    WorkspaceConfig workspace();
+
+    /**
+     * Workspace config
+     */
+    interface WorkspaceConfig {
+
+        /**
+         * Mapping workspace configuration.
+         */
+        @WithName("mapping")
+        Map<String, String> mapping();
+    }
 
     /**
      * Token configuration

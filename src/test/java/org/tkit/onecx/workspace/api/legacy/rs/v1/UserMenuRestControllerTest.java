@@ -76,7 +76,7 @@ class UserMenuRestControllerTest extends AbstractTest {
                         .withBody(JsonBody.json(response)));
 
         GetMenuItemsRequestDTOV1 requestDTO = new GetMenuItemsRequestDTOV1()
-                .workspaceName(workspaceName).token(accessToken).menuKeys(List.of("main-menu"));
+                .workspaceName(workspaceName + "Mapping").token(accessToken).menuKeys(List.of("main-menu"));
 
         var output = given()
                 .when()
@@ -91,6 +91,46 @@ class UserMenuRestControllerTest extends AbstractTest {
                 .extract().as(UserWorkspaceMenuStructureDTOV1.class);
 
         Assertions.assertEquals(output.getMenu().size(), response.getMenu().size());
+
+        mockServerClient.clear("mock");
+    }
+
+    @Test
+    void getUserMenuAccessTokenNotMappingTest() {
+
+        final String accessToken = keycloakClient.getAccessToken(ADMIN);
+        String workspaceName = "testWorkspace2";
+
+        UserWorkspaceMenuItem child = new UserWorkspaceMenuItem().name("mainMenuChild").key("MAIN_MENU_CHILD").position(2)
+                .url("/child");
+        UserWorkspaceMenuItem menuItem = new UserWorkspaceMenuItem().key("MAIN_MENU").name("mainMenu").position(1)
+                .url("/menuItem1").children(List.of(child));
+        UserWorkspaceMenuStructure response = new UserWorkspaceMenuStructure().workspaceName(workspaceName)
+                .menu(List.of(menuItem));
+
+        // create mock rest endpoint
+        mockServerClient
+                .when(request().withPath("/internal/user/" + workspaceName + "/menu")
+                        .withBody(JsonBody.json(new UserWorkspaceMenuRequest().token(accessToken)
+                                .menuKeys(List.of("main-menu"))))
+                        .withMethod(HttpMethod.POST))
+                .withId("mock")
+                .respond(httpRequest -> response().withStatusCode(Response.Status.OK.getStatusCode())
+                        .withContentType(MediaType.APPLICATION_JSON)
+                        .withBody(JsonBody.json(response)));
+
+        GetMenuItemsRequestDTOV1 requestDTO = new GetMenuItemsRequestDTOV1()
+                .workspaceName(workspaceName + "NotMapping").token(accessToken).menuKeys(List.of("main-menu"));
+
+        given()
+                .when()
+                .auth().oauth2(getKeycloakClientToken("testClient"))
+                .header(APM_HEADER_PARAM, keycloakClient.getAccessToken(USER))
+                .contentType(APPLICATION_JSON)
+                .body(requestDTO)
+                .post("accessToken")
+                .then()
+                .statusCode(Response.Status.NOT_FOUND.getStatusCode());
 
         mockServerClient.clear("mock");
     }

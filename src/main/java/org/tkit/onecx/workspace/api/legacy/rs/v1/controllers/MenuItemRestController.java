@@ -10,6 +10,7 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.resteasy.reactive.ClientWebApplicationException;
 import org.jboss.resteasy.reactive.RestResponse;
 import org.jboss.resteasy.reactive.server.ServerExceptionMapper;
+import org.tkit.onecx.workspace.api.legacy.domain.config.ApiLegacyConfig;
 import org.tkit.onecx.workspace.api.legacy.domain.service.TokenService;
 import org.tkit.onecx.workspace.api.legacy.rs.v1.mappers.ExceptionMapper;
 import org.tkit.onecx.workspace.api.legacy.rs.v1.mappers.UserMenuMapper;
@@ -40,6 +41,9 @@ public class MenuItemRestController implements MenuItemApiV1 {
     @Inject
     TokenService tokenService;
 
+    @Inject
+    ApiLegacyConfig config;
+
     @ServerExceptionMapper
     public RestResponse<ProblemDetailResponseDTOV1> constraint(ConstraintViolationException ex) {
         return exceptionMapper.constraint(ex);
@@ -53,7 +57,8 @@ public class MenuItemRestController implements MenuItemApiV1 {
     @Override
     public Response getMenuItemsAccessToken(GetMenuItemsRequestDTOV1 getMenuItemsRequestDTOV1) {
         UserWorkspaceMenuRequest request = mapper.map(getMenuItemsRequestDTOV1);
-        try (Response response = userMenuClient.getUserMenu(getMenuItemsRequestDTOV1.getWorkspaceName(), request)) {
+        var workspaceName = workspaceName(getMenuItemsRequestDTOV1);
+        try (Response response = userMenuClient.getUserMenu(workspaceName, request)) {
             return Response.status(response.getStatus())
                     .entity(mapper.map(response.readEntity(UserWorkspaceMenuStructure.class))).build();
         }
@@ -64,10 +69,18 @@ public class MenuItemRestController implements MenuItemApiV1 {
         UserWorkspaceMenuRequest request = mapper.map(getMenuItemsRequestDTOV1);
         var token = tokenService.convertIdToken(request.getToken());
         request.setToken(token);
-        try (Response response = userMenuClient.getUserMenu(getMenuItemsRequestDTOV1.getWorkspaceName(), request)) {
+        var workspaceName = workspaceName(getMenuItemsRequestDTOV1);
+        try (Response response = userMenuClient.getUserMenu(workspaceName, request)) {
             return Response.status(response.getStatus())
                     .entity(mapper.map(response.readEntity(UserWorkspaceMenuStructure.class))).build();
         }
     }
 
+    private String workspaceName(GetMenuItemsRequestDTOV1 dto) {
+        var workspace = config.workspace().mapping().get(dto.getWorkspaceName());
+        if (workspace != null) {
+            return workspace;
+        }
+        return dto.getWorkspaceName();
+    }
 }
