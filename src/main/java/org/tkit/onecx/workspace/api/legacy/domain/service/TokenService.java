@@ -1,5 +1,6 @@
 package org.tkit.onecx.workspace.api.legacy.domain.service;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -25,10 +26,13 @@ public class TokenService {
 
     private static String[] accessTokenClaimPath;
 
+    private static final Map<String, ApiLegacyConfig.WorkspaceConfig> workspaces = new HashMap<>();
+
     @PostConstruct
     @SuppressWarnings("java:S2696")
     public void init() {
         accessTokenClaimPath = splitClaimPath(config.token().accessTokenRolesPath());
+        config.workspaces().forEach((k, v) -> workspaces.put(v.name(), v));
     }
 
     public String convertIdToken(String token) {
@@ -66,5 +70,13 @@ public class TokenService {
     @SuppressWarnings("java:S2692")
     static String[] splitClaimPath(String claimPath) {
         return claimPath.indexOf('/') > 0 ? CLAIM_PATH_PATTERN.split(claimPath) : new String[] { claimPath };
+    }
+
+    public String workspaceName(String request) {
+        var workspace = workspaces.get(request);
+        if (workspace != null) {
+            return workspace.rename();
+        }
+        return request;
     }
 }

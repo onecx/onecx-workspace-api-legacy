@@ -57,7 +57,7 @@ public class MenuItemRestController implements MenuItemApiV1 {
     @Override
     public Response getMenuItemsAccessToken(GetMenuItemsRequestDTOV1 getMenuItemsRequestDTOV1) {
         UserWorkspaceMenuRequest request = mapper.map(getMenuItemsRequestDTOV1);
-        var workspaceName = workspaceName(getMenuItemsRequestDTOV1);
+        var workspaceName = tokenService.workspaceName(getMenuItemsRequestDTOV1.getWorkspaceName());
         try (Response response = userMenuClient.getUserMenu(workspaceName, request)) {
             return Response.status(response.getStatus())
                     .entity(mapper.map(response.readEntity(UserWorkspaceMenuStructure.class))).build();
@@ -69,18 +69,11 @@ public class MenuItemRestController implements MenuItemApiV1 {
         UserWorkspaceMenuRequest request = mapper.map(getMenuItemsRequestDTOV1);
         var token = tokenService.convertIdToken(request.getToken());
         request.setToken(token);
-        var workspaceName = workspaceName(getMenuItemsRequestDTOV1);
+        var workspaceName = tokenService.workspaceName(getMenuItemsRequestDTOV1.getWorkspaceName());
         try (Response response = userMenuClient.getUserMenu(workspaceName, request)) {
             return Response.status(response.getStatus())
                     .entity(mapper.map(response.readEntity(UserWorkspaceMenuStructure.class))).build();
         }
     }
 
-    private String workspaceName(GetMenuItemsRequestDTOV1 dto) {
-        var workspace = config.workspace().mapping().get(dto.getWorkspaceName());
-        if (workspace != null) {
-            return workspace;
-        }
-        return dto.getWorkspaceName();
-    }
 }

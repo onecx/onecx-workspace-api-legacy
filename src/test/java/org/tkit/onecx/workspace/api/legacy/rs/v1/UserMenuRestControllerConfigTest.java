@@ -69,7 +69,7 @@ class UserMenuRestControllerConfigTest extends AbstractTest {
     void beforeEach() {
         var tmp = config.unwrap(SmallRyeConfig.class).getConfigMapping(ApiLegacyConfig.class);
         Mockito.when(pathConfig.token()).thenReturn(tmp.token());
-        Mockito.when(pathConfig.workspace()).thenReturn(tmp.workspace());
+        Mockito.when(pathConfig.workspaces()).thenReturn(tmp.workspaces());
         Mockito.when(pathConfig.shellMapping()).thenReturn(new ApiLegacyConfig.ShellMappingConfig() {
             @Override
             public boolean enabled() {

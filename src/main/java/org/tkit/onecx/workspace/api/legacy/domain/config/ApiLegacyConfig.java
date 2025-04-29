@@ -20,8 +20,8 @@ public interface ApiLegacyConfig {
     /**
      * Workspace config
      */
-    @WithName("workspace")
-    WorkspaceConfig workspace();
+    @WithName("workspaces")
+    Map<String, WorkspaceConfig> workspaces();
 
     /**
      * Workspace config
@@ -31,8 +31,15 @@ public interface ApiLegacyConfig {
         /**
          * Mapping workspace configuration.
          */
-        @WithName("mapping")
-        Map<String, String> mapping();
+        @WithName("name")
+        String name();
+
+        /**
+         * Rename workspace configuration.
+         */
+        @WithName("rename")
+        String rename();
+
     }
 
     /**

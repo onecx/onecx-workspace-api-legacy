@@ -8,7 +8,7 @@ h|[.header-title]##Configuration property##
 h|Type
 h|Default
 
-a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-workspace-mapping-mapping]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-workspace-mapping-mapping[`onecx.workspace.api.legacy.workspace.mapping."mapping"`]##
+a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-workspaces-workspaces-name]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-workspaces-workspaces-name[`onecx.workspace.api.legacy.workspaces."workspaces".name`]##
 
 [.description]
 --
@@ -16,14 +16,31 @@ Mapping workspace configuration.
 
 
 ifdef::add-copy-button-to-env-var[]
-Environment variable: env_var_with_copy_button:+++ONECX_WORKSPACE_API_LEGACY_WORKSPACE_MAPPING__MAPPING_+++[]
+Environment variable: env_var_with_copy_button:+++ONECX_WORKSPACE_API_LEGACY_WORKSPACES__WORKSPACES__NAME+++[]
 endif::add-copy-button-to-env-var[]
 ifndef::add-copy-button-to-env-var[]
-Environment variable: `+++ONECX_WORKSPACE_API_LEGACY_WORKSPACE_MAPPING__MAPPING_+++`
+Environment variable: `+++ONECX_WORKSPACE_API_LEGACY_WORKSPACES__WORKSPACES__NAME+++`
 endif::add-copy-button-to-env-var[]
 --
-|Map<String,String>
-|
+|string
+|required icon:exclamation-circle[title=Configuration property is required]
+
+a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-workspaces-workspaces-rename]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-workspaces-workspaces-rename[`onecx.workspace.api.legacy.workspaces."workspaces".rename`]##
+
+[.description]
+--
+Rename workspace configuration.
+
+
+ifdef::add-copy-button-to-env-var[]
+Environment variable: env_var_with_copy_button:+++ONECX_WORKSPACE_API_LEGACY_WORKSPACES__WORKSPACES__RENAME+++[]
+endif::add-copy-button-to-env-var[]
+ifndef::add-copy-button-to-env-var[]
+Environment variable: `+++ONECX_WORKSPACE_API_LEGACY_WORKSPACES__WORKSPACES__RENAME+++`
+endif::add-copy-button-to-env-var[]
+--
+|string
+|required icon:exclamation-circle[title=Configuration property is required]
 
 a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-token-access-roles-path]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-token-access-roles-path[`onecx.workspace.api.legacy.token.access.roles.path`]##
 
