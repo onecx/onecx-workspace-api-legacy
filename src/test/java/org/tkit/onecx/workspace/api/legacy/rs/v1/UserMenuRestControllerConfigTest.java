@@ -90,12 +90,18 @@ class UserMenuRestControllerConfigTest extends AbstractTest {
 
         UserWorkspaceMenuRequest request = new UserWorkspaceMenuRequest().token(accessToken).menuKeys(List.of("main-menu"));
 
-        UserWorkspaceMenuItem menuItemInternal = new UserWorkspaceMenuItem().key("MAIN_MENU_INTERNAL").name("mainMenuInternal")
+        UserWorkspaceMenuItem menuItemInternal1 = new UserWorkspaceMenuItem().key("MAIN_MENU_INTERNAL").name("mainMenuInternal")
                 .position(1).url("/menuItem1").external(false);
+        UserWorkspaceMenuItem menuItemInternal2 = new UserWorkspaceMenuItem().key("MAIN_MENU_INTERNAL").name("mainMenuInternal")
+                .position(1).external(false);
+        UserWorkspaceMenuItem menuItemInternal3 = new UserWorkspaceMenuItem().key("MAIN_MENU_INTERNAL").name("mainMenuInternal")
+                .position(1).url("http://menuItem1").external(false);
         UserWorkspaceMenuItem menuItemExternal = new UserWorkspaceMenuItem().key("MAIN_MENU_EXTERNAL").name("mainMenuExternal")
                 .position(1).url("/menuItem2").external(true);
+        UserWorkspaceMenuItem menuItemExternal2 = new UserWorkspaceMenuItem().key("MAIN_MENU_EXTERNAL").name("mainMenuExternal")
+                .position(1).url("/menuItemUrlNull").external(null);
         UserWorkspaceMenuStructure response = new UserWorkspaceMenuStructure().workspaceName(workspaceName)
-                .menu(List.of(menuItemInternal, menuItemExternal));
+                .menu(List.of(menuItemInternal1, menuItemInternal2, menuItemInternal3, menuItemExternal, menuItemExternal2));
 
         // create mock rest endpoint
         mockServerClient
@@ -121,8 +127,10 @@ class UserMenuRestControllerConfigTest extends AbstractTest {
                 .contentType(APPLICATION_JSON)
                 .extract().as(UserWorkspaceMenuStructureDTOV1.class);
 
-        Assertions.assertEquals("customPrefix/menuItem1", output.getMenu().get(0).getUrl());
-        Assertions.assertEquals("/menuItem2", output.getMenu().get(1).getUrl());
+        Assertions.assertEquals("/customPrefix/menuItem1", output.getMenu().get(0).getUrl());
+        Assertions.assertNull(output.getMenu().get(1).getUrl());
+        Assertions.assertEquals("http://menuItem1", output.getMenu().get(2).getUrl());
+        Assertions.assertEquals("/menuItem2", output.getMenu().get(3).getUrl());
         mockServerClient.clear("mock");
     }
 

@@ -108,7 +108,7 @@ Environment variable: `+++ONECX_WORKSPACE_API_LEGACY_SHELL_MAPPING_PREFIX+++`
 endif::add-copy-button-to-env-var[]
 --
 |string
-|`ui/`
+|`/ui/`
 
 |===
 

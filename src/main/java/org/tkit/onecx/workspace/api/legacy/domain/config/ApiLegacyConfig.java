@@ -87,7 +87,7 @@ public interface ApiLegacyConfig {
         /**
          * Prefix to be used for paths
          */
-        @WithDefault("ui/")
+        @WithDefault("/ui/")
         @WithName("prefix")
         String prefix();
     }

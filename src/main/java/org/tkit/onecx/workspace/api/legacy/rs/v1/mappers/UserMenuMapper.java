@@ -29,18 +29,23 @@ public abstract class UserMenuMapper {
 
     @AfterMapping
     void afterMapping(@MappingTarget UserWorkspaceMenuItemDTOV1 itemDTOV1, UserWorkspaceMenuItem item) {
-        if (pathConfig.shellMapping().enabled() && itemDTOV1.getExternal() != null
-                && Boolean.FALSE.equals(itemDTOV1.getExternal())) {
+        if (!pathConfig.shellMapping().enabled()) {
+            return;
+        }
+        if (itemDTOV1.getExternal() != null && Boolean.FALSE.equals(itemDTOV1.getExternal())) {
             itemDTOV1.setUrl(mapPath(pathConfig.shellMapping().prefix(), item.getUrl()));
         }
     }
 
     String mapPath(String prefix, String url) {
+        if (url == null) {
+            return url;
+        }
+        if (url.startsWith("http")) {
+            return url;
+        }
         if (url.startsWith("/")) {
             url = url.substring(1);
-        }
-        if (!prefix.endsWith("/")) {
-            prefix += "/";
         }
         return prefix + url;
     }
