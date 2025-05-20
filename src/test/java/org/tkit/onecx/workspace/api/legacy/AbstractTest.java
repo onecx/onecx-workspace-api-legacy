@@ -34,6 +34,10 @@ public abstract class AbstractTest {
     protected static final String APM_HEADER_PARAM = ConfigProvider.getConfig()
             .getValue("%test.tkit.rs.context.token.header-param", String.class);
 
+    protected String getKeycloakClientToken(String clientId) {
+        return keycloakClient.getClientAccessToken(clientId);
+    }
+
     static {
         RestAssured.config = RestAssuredConfig.config().objectMapperConfig(
                 ObjectMapperConfig.objectMapperConfig().jackson2ObjectMapperFactory(
