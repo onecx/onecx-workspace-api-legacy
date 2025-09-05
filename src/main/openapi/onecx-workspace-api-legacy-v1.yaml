@@ -2,7 +2,7 @@
 openapi: 3.0.3
 info:
   title: onecx-workspace-api-legacy
-  description: OneCX Workspace API legacy
+  description: This API provides endpoints to retrieve Workspace Menus in the old legacy way
   version: "1.0"
 servers:
   - url: http://onecx-workspace-api-legacy:8080/
@@ -15,7 +15,7 @@ paths:
         - oauth2: [ ocx-ws-legacy:read ]
       tags:
         - menuItem
-      description: get User specific menu items
+      description: Get menu items for the requesting user by its id-token
       operationId: getMenuItemsIdToken
       requestBody:
         required: true
@@ -25,7 +25,7 @@ paths:
               $ref: '#/components/schemas/GetMenuItemsRequest'
       responses:
         200:
-          description: Ok
+          description: Menu items retrieved successfully
           content:
             application/json:
               schema:
@@ -42,7 +42,7 @@ paths:
         - oauth2: [ ocx-ws-legacy:read ]
       tags:
         - menuItem
-      description: get User specific menu items
+      description: Get menu items for the requesting user by its access-token
       operationId: getMenuItemsAccessToken
       requestBody:
         required: true
@@ -52,7 +52,7 @@ paths:
               $ref: '#/components/schemas/GetMenuItemsRequest'
       responses:
         200:
-          description: Ok
+          description: Menu items retrieved successfully
           content:
             application/json:
               schema:
