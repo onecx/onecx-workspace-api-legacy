@@ -2,7 +2,7 @@
 openapi: 3.0.3
 info:
   title: onecx-workspace-api-legacy
-  description: This API provides endpoints to retrieve Workspace Menus in the old legacy way
+  description: This API provides endpoints to retrieve Workspace Menus for legacy applications
   version: "1.0"
 servers:
   - url: http://onecx-workspace-api-legacy:8080/
