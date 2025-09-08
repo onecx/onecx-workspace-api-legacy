@@ -1,5 +1,9 @@
 package org.tkit.onecx.workspace.api.legacy.rs.v1.mappers;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+
 import jakarta.inject.Inject;
 
 import org.mapstruct.*;
@@ -26,6 +30,15 @@ public abstract class UserMenuMapper {
     @Mapping(target = "removeI18nItem", ignore = true)
     @Mapping(target = "removeChildrenItem", ignore = true)
     abstract UserWorkspaceMenuItemDTOV1 map(UserWorkspaceMenuItem item);
+
+    public List<UserWorkspaceMenuItemDTOV1> filterDisabledItems(List<UserWorkspaceMenuItem> items) {
+        return Optional.ofNullable(items)
+                .orElse(Collections.emptyList())
+                .stream()
+                .filter(item -> !Boolean.TRUE.equals(item.getDisabled()))
+                .map(this::map)
+                .toList();
+    }
 
     @AfterMapping
     void afterMapping(@MappingTarget UserWorkspaceMenuItemDTOV1 itemDTOV1, UserWorkspaceMenuItem item) {
