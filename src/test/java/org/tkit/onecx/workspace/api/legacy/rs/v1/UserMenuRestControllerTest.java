@@ -58,8 +58,10 @@ class UserMenuRestControllerTest extends AbstractTest {
 
         UserWorkspaceMenuItem child = new UserWorkspaceMenuItem().name("mainMenuChild").key("MAIN_MENU_CHILD").position(2)
                 .url("/child");
+        UserWorkspaceMenuItem disabledItem = new UserWorkspaceMenuItem().key("DISABLED").name("disabledItem").position(3)
+                .url("/disabled").disabled(true);
         UserWorkspaceMenuItem menuItem = new UserWorkspaceMenuItem().key("MAIN_MENU").name("mainMenu").position(1)
-                .url("/menuItem1").children(List.of(child));
+                .url("/menuItem1").children(List.of(child, disabledItem));
         UserWorkspaceMenuStructure response = new UserWorkspaceMenuStructure().workspaceName(workspaceName)
                 .menu(List.of(menuItem));
 
@@ -90,6 +92,7 @@ class UserMenuRestControllerTest extends AbstractTest {
                 .extract().as(UserWorkspaceMenuStructureDTOV1.class);
 
         Assertions.assertEquals(output.getMenu().size(), response.getMenu().size());
+        Assertions.assertEquals(1, output.getMenu().get(0).getChildren().size());
 
         mockServerClient.clear("mock");
     }
@@ -191,8 +194,10 @@ class UserMenuRestControllerTest extends AbstractTest {
 
         UserWorkspaceMenuItem child = new UserWorkspaceMenuItem().name("mainMenuChild").key("MAIN_MENU_CHILD").position(2)
                 .url("/child");
+        UserWorkspaceMenuItem disabledItem = new UserWorkspaceMenuItem().key("DISABLED").name("disabledItem").position(3)
+                .url("/disabled").disabled(true);
         UserWorkspaceMenuItem menuItem = new UserWorkspaceMenuItem().key("MAIN_MENU").name("mainMenu").position(1)
-                .url("/menuItem1").children(List.of(child));
+                .url("/menuItem1").children(List.of(child, disabledItem));
         UserWorkspaceMenuStructure response = new UserWorkspaceMenuStructure().workspaceName(workspaceName)
                 .menu(List.of(menuItem));
 
@@ -231,6 +236,7 @@ class UserMenuRestControllerTest extends AbstractTest {
                 .extract().as(UserWorkspaceMenuStructureDTOV1.class);
 
         Assertions.assertEquals(output.getMenu().size(), response.getMenu().size());
+        Assertions.assertEquals(1, output.getMenu().get(0).getChildren().size());
 
         mockServerClient.clear("mock");
     }
