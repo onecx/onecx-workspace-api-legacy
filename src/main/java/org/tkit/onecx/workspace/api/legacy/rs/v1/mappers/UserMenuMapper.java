@@ -3,7 +3,6 @@ package org.tkit.onecx.workspace.api.legacy.rs.v1.mappers;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import jakarta.inject.Inject;
 
@@ -38,7 +37,7 @@ public abstract class UserMenuMapper {
                 .stream()
                 .filter(item -> !Boolean.TRUE.equals(item.getDisabled()))
                 .map(this::map)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     @AfterMapping
