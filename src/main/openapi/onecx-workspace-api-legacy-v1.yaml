@@ -119,6 +119,8 @@ components:
         external:
           type: boolean
           default: false
+        target:
+          $ref: '#/components/schemas/Target'
         disabled:
           type: boolean
         i18n:
@@ -129,6 +131,11 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserWorkspaceMenuItem'
+    Target:
+      type: string
+      enum:
+        - _self
+        - _blank
     ProblemDetailResponse:
       type: object
       properties:
