@@ -68,7 +68,7 @@ Environment variable: `+++ONECX_WORKSPACE_API_LEGACY_TOKEN_ACCESS_ROLES_PATH+++`
 endif::add-copy-button-to-env-var[]
 --
 |string
-|`realm_access/roles`
+|`+++realm_access/roles+++`
 
 a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-token-id-roles]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-token-id-roles[`onecx.workspace.api.legacy.token.id.roles`]##
 ifdef::add-copy-button-to-config-props[]
@@ -89,7 +89,7 @@ Environment variable: `+++ONECX_WORKSPACE_API_LEGACY_TOKEN_ID_ROLES+++`
 endif::add-copy-button-to-env-var[]
 --
 |string
-|`realm_roles`
+|`+++realm_roles+++`
 
 a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-shell-mapping-enabled]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-shell-mapping-enabled[`onecx.workspace.api.legacy.shell-mapping.enabled`]##
 ifdef::add-copy-button-to-config-props[]
@@ -110,7 +110,7 @@ Environment variable: `+++ONECX_WORKSPACE_API_LEGACY_SHELL_MAPPING_ENABLED+++`
 endif::add-copy-button-to-env-var[]
 --
 |boolean
-|`false`
+|`+++false+++`
 
 a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-shell-mapping-prefix]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-shell-mapping-prefix[`onecx.workspace.api.legacy.shell-mapping.prefix`]##
 ifdef::add-copy-button-to-config-props[]
@@ -131,7 +131,7 @@ Environment variable: `+++ONECX_WORKSPACE_API_LEGACY_SHELL_MAPPING_PREFIX+++`
 endif::add-copy-button-to-env-var[]
 --
 |string
-|`/ui/`
+|`+++/ui/+++`
 
 |===
 
