@@ -62,8 +62,3 @@ app:
 
 ----
 
-     description: OneCX Workspace API Legacy
-        name: OneCX Workspace API Legacy
-
-----
-
