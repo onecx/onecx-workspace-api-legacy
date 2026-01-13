@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>onecx-workspace-api-legacy</artifactId>
+    <name>OneCX Workspace API Legacy</name>
     <version>999-SNAPSHOT</version>
 
     <dependencies>
