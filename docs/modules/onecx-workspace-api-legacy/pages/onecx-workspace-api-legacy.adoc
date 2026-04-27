@@ -7,7 +7,7 @@ h|[.header-title]##Configuration property##
 h|Type
 h|Default
 
-a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-workspaces-workspaces-name]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-workspaces-workspaces-name[`onecx.workspace.api.legacy.workspaces."workspaces".name`]##
+a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-workspaces-workspaces-name]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-workspaces-workspaces-name[`+++onecx.workspace.api.legacy.workspaces."workspaces".name+++`]##
 ifdef::add-copy-button-to-config-props[]
 config_property_copy_button:+++onecx.workspace.api.legacy.workspaces."workspaces".name+++[]
 endif::add-copy-button-to-config-props[]
@@ -28,7 +28,7 @@ endif::add-copy-button-to-env-var[]
 |string
 |required icon:exclamation-circle[title=Configuration property is required]
 
-a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-workspaces-workspaces-rename]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-workspaces-workspaces-rename[`onecx.workspace.api.legacy.workspaces."workspaces".rename`]##
+a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-workspaces-workspaces-rename]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-workspaces-workspaces-rename[`+++onecx.workspace.api.legacy.workspaces."workspaces".rename+++`]##
 ifdef::add-copy-button-to-config-props[]
 config_property_copy_button:+++onecx.workspace.api.legacy.workspaces."workspaces".rename+++[]
 endif::add-copy-button-to-config-props[]
@@ -49,7 +49,7 @@ endif::add-copy-button-to-env-var[]
 |string
 |required icon:exclamation-circle[title=Configuration property is required]
 
-a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-token-access-roles-path]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-token-access-roles-path[`onecx.workspace.api.legacy.token.access.roles.path`]##
+a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-token-access-roles-path]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-token-access-roles-path[`+++onecx.workspace.api.legacy.token.access.roles.path+++`]##
 ifdef::add-copy-button-to-config-props[]
 config_property_copy_button:+++onecx.workspace.api.legacy.token.access.roles.path+++[]
 endif::add-copy-button-to-config-props[]
@@ -70,7 +70,7 @@ endif::add-copy-button-to-env-var[]
 |string
 |`+++realm_access/roles+++`
 
-a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-token-id-roles]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-token-id-roles[`onecx.workspace.api.legacy.token.id.roles`]##
+a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-token-id-roles]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-token-id-roles[`+++onecx.workspace.api.legacy.token.id.roles+++`]##
 ifdef::add-copy-button-to-config-props[]
 config_property_copy_button:+++onecx.workspace.api.legacy.token.id.roles+++[]
 endif::add-copy-button-to-config-props[]
@@ -91,7 +91,7 @@ endif::add-copy-button-to-env-var[]
 |string
 |`+++realm_roles+++`
 
-a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-shell-mapping-enabled]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-shell-mapping-enabled[`onecx.workspace.api.legacy.shell-mapping.enabled`]##
+a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-shell-mapping-enabled]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-shell-mapping-enabled[`+++onecx.workspace.api.legacy.shell-mapping.enabled+++`]##
 ifdef::add-copy-button-to-config-props[]
 config_property_copy_button:+++onecx.workspace.api.legacy.shell-mapping.enabled+++[]
 endif::add-copy-button-to-config-props[]
@@ -112,7 +112,7 @@ endif::add-copy-button-to-env-var[]
 |boolean
 |`+++false+++`
 
-a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-shell-mapping-prefix]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-shell-mapping-prefix[`onecx.workspace.api.legacy.shell-mapping.prefix`]##
+a| [[onecx-workspace-api-legacy_onecx-workspace-api-legacy-shell-mapping-prefix]] [.property-path]##link:#onecx-workspace-api-legacy_onecx-workspace-api-legacy-shell-mapping-prefix[`+++onecx.workspace.api.legacy.shell-mapping.prefix+++`]##
 ifdef::add-copy-button-to-config-props[]
 config_property_copy_button:+++onecx.workspace.api.legacy.shell-mapping.prefix+++[]
 endif::add-copy-button-to-config-props[]
